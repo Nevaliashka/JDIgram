@@ -4,6 +4,10 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+  <%= f.text_field :username, autofocus: true, autocomplete: "username", :class => "form-controll", size: 30 , :placeholder => "Username" %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
