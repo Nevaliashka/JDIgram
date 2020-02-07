@@ -6,7 +6,7 @@ class PersonsController < ApplicationController
   # git push -u origin master
 
   def index
-    @text = "Hellow World!"
+    @text = ""
   end
 end
 

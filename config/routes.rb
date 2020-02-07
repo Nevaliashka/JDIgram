@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  root 'persons#index', as: 'home'
+  root 'home#index'
+
+  devise_for :users, controllers
 
   resources :persons
+  devise_scope :user do
+    get '/login', to: 'users/sessions#new'
+  end
+
+
+
 end
