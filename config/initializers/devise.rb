@@ -255,6 +255,7 @@ Devise.setup do |config|
   config.authentication_keys = [ :login ]
 
 
+
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.

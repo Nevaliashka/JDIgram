@@ -1,14 +1,25 @@
-%p{:class => "myclass", :id => "myid"} My paragraph
-.d-flex.flex-column.flex-md-row.align-items-center.p-3.px-md-4.mb-3.bg-white.border-bottom.shadow-sm
-  %h3.my-0.mr-md-auto.font-weight-normal
-    = link_to "My blogs", home_path, :class => "btn btn-outline-primary"
-  -if 1==1
-    .my-2.my-md-1.mr-md-3
-      %strong #{@text}
-    .my-2.my-md-1.mr-md-3
-      = link_to "Edit", edit_user_registration_path, :class => "btn btn-outline-primary"
-    .my-2.my-md-1.mr-md-3
-      %input{:class=>"form-control mr-sm-2", :type=>"search", :placeholder=>"Search", :aria_label=>"Search"}
-  -else
-    .my-2.my-md-1.mr-md-3
-      = link_to "My blogs", home_path, :class => "btn btn-outline-primary"
+#login
+  %h3.text-center.text-white.pt-5 Login form
+  .container
+    #login-row.row.justify-content-center.align-items-center
+      #login-column.col-md-6
+        #login-box.col-md-12
+          %form#login-form.form{:action => "", :method => "post"}
+            %h3.text-center.text-info Login
+            .form-group
+              %label.text-info{:for => "username"} Username:
+              %br/
+              %input#username.form-control{:name => "username", :type => "text"}/
+            .form-group
+              %label.text-info{:for => "password"} Password:
+              %br/
+              %input#password.form-control{:name => "password", :type => "text"}/
+            .form-group
+              %label.text-info{:for => "remember-me"}
+                %span> Remember me                 
+                %span
+                  %input#remember-me{:name => "remember-me", :type => "checkbox"}/
+              %br/
+              %input.btn.btn-info.btn-md{:name => "submit", :type => "submit", :value => "submit"}/
+            #register-link.text-right
+              %a.text-info{:href => "#"} Register here

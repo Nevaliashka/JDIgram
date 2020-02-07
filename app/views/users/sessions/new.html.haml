@@ -1,15 +1,21 @@
-.class="text-center"
-  .content Login
-  =form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    .class="field"
-      =f.text_field :login, autofocus: true, :class => "form-controll", size: 30 , :placeholder => "Username or Email"
-    .class="field"
-      =f.password_field :password, autocomplete: "off", :class => "form-controll", size: 30 , :placeholder => "Password"
-    -if devise_mapping.rememberable?
-      .class="field"
-        =f.check_box :remember_me
-        =f.label :remember_me
-    .class="action"
-      =f.submit "Log in", :class=>'btn btn-primary btn-lg'
-
-  end
+.text-center
+  %h2 Log in
+  #login
+  %h3.text-center.text-white.pt-5 Login form
+  .container
+    #login-row.row.justify-content-center.align-items-center
+      #login-column.col-md-6
+        #login-box.col-md-12
+          %form#login-form.form{:action => "", :method => "post"}
+            = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+              .field
+                = f.text_field :login, autofocus: true, :class => "form-control", :placeholder => "Username or Email"
+              .field
+                = f.password_field :password, autocomplete: "off", :class => "form-control",:placeholder => "Password"
+              - if devise_mapping.rememberable?
+                .field
+                  = f.check_box :remember_me
+                  = f.label :remember_me
+              .actions
+                = f.submit "Log in", :class => 'btn btn-primary btn-lg'
+            = render "devise/shared/links"
