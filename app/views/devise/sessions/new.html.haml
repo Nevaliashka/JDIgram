@@ -1,28 +1,33 @@
 .text-center
   %br
-  %h2.text-info Log in
-#login
-  %h3.text-center.text-white.pt-5 Login form
-  .container
-    #login-row.row.justify-content-center.align-items-center
-      #login-column.col-md-6
-        #login-box.col-md-12
-          = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  %h1.text-info Log in
+  %br
+.container
+  #row.row.justify-content-center.align-items-center
+    #column.col-md-6
+      #box.col-md-12
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .text-danger= devise_error_messages!
+          .field
+            %label.text-info{:for => "username"} Username or Email:
+            %br/
+            = f.text_field :login, autofocus: true, :class => "form-control", size: 30 , :placeholder => "Username or Email"
+            %br/
+          .field
+            %label.text-info{:for => "password"} Password:
+            %br/
+            = f.password_field :password, autocomplete: "off", :class => "form-control", size: 30 ,:placeholder => "Password"
+          - if devise_mapping.rememberable?
+            .field
+              = f.check_box :remember_me
+              = f.label :remember_me
+          .actions
+            = f.submit "Log in", :class => "btn btn-outline-info"
+            = link_to "Registration", registrations_path, :class => "btn btn-info", :style=>"float: right;"
+        = render "devise/shared/links"
 
-            .field
-              %label.text-info{:for => "username"} Username or Email:
-              %br/
-              = f.text_field :login, autofocus: true, :class => "form-control", size: 30 , :placeholder => "Username or Email"
-              %br/
-            .field
-              %label.text-info{:for => "password"} Password:
-              %br/
-              = f.password_field :password, autocomplete: "off", :class => "form-control", size: 30 ,:placeholder => "Password"
-            - if devise_mapping.rememberable?
-              .field
-                = f.check_box :remember_me
-                = f.label :remember_me
-            .actions
-              = f.submit "Log in", :class => "btn btn-outline-info"
-              = link_to "Registration", registrations_path, :class => "btn btn-info"
-          = render "devise/shared/links"
+
+
+
+
+

@@ -1,22 +1,22 @@
 .text-center
   %br
-  %h2.text-info Forgot your password?
-#login
-  %h3.text-center.text-white.pt-5 Login form
-  .container
-    #login-row.row.justify-content-center.align-items-center
-      #login-column.col-md-6
-        #login-box.col-md-12
-          = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-            = devise_error_messages!
-            .field
-              %label.text-info{:for => "email"} Email that was linked to an account:
-              %br/
-              = f.email_field :email, autofocus: true, autocomplete: "email" , :class => "form-control", size: 30 , :placeholder => "Email"
-              %br/
-            .actions
-              = f.submit "Send me reset password instructions", :class => "btn btn-outline-info"
+  %h1.text-info Forgot your password?
+  %br
+.container
+  #row.row.justify-content-center.align-items-center
+    #column.col-md-6
+      #box.col-md-12
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+          .text-danger= devise_error_messages!
+          .field
+            %label.text-info{:for => "email"} Email that was linked to an account:
+            %br/
+            = f.email_field :email, autofocus: true, autocomplete: "email" , :class => "form-control", size: 30 , :placeholder => "Email"
+            %br/
+          .actions
+            = f.submit "Send me reset password instructions", :class => "btn btn-outline-info"
           = render "devise/shared/links"
+
 
 
 

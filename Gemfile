@@ -19,6 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'bootstrap-sass'
 gem 'haml-rails'
 gem 'devise'
+gem 'carrierwave'
 #2131231231231
 
 # Use CoffeeScript for .coffee assets and views
