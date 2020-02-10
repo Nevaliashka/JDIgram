@@ -1,28 +1,13 @@
 %br
 %h1.text-success.text-right="#{@user.username}"
 %h1.text-success.text-right="Your id #{@user.id}"
-
 %h1.text-success.text-right="#{@user.about}"
 =form_for(@user, url: about_path, html: {method: "get"}) do |f|
   .text-right= f.hidden_field :id, value: @user.id
   = f.text_field :about, autocomplete: "about"
   = f.submit "Submit"
 
-.dropdown
-  %button#dropdownMenu2.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-    Dropdown
-  .dropdown-menu{"aria-labelledby" => "dropdownMenu2"}
-    %button.dropdown-item{:type => "button", :color => "black"} Action
-    %button.dropdown-item{:type => "button"} Another action
-    %button.dropdown-item{:type => "button"} Something else here
 
-%li.nav-item.dropdown
-  %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-    Dropdown link
-  .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
-    %a.dropdown-item{:href => "#"} Action
-    %a.dropdown-item{:href => "#"} Another action
-    %a.dropdown-item{:href => "#"} Something else here
 
 
 

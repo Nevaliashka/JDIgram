@@ -14,6 +14,11 @@
             = f.text_field :username, autofocus: true, autocomplete: "username", :class => "form-control", size: 30 , :placeholder => "Username"
             %br/
           .field
+            %label.text-info{:for => "About"} About:
+            %br/
+            = f.text_field :about, autofocus: true, autocomplete: "about", :class => "form-control", size: 30 , :placeholder => "About"
+            %br/
+          .field
             %label.text-info{:for => "email"} Email:
             %br/
             = f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control", size: 30 , :placeholder => "Email"
