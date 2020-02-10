@@ -8,11 +8,14 @@
   %body
     .d-flex.flex-column.flex-md-row.align-items-center.p-3.px-md-4.mb-3.bg-white.border-bottom.box-shadow
       - if user_signed_in?
-        %h5.my-0.mr-md-auto.font-weight-normal= link_to 'My blogs', persons_path, :class => 'btn btn-outline-dark'
+        %h5.my-0.mr-md-auto.font-weight-normal= link_to 'Main page', home_path,data: { confirm: "Are you sure?" }, :class => 'btn btn-outline-dark'
       -else
         %h5.my-0.mr-md-auto.font-weight-normal.text-info JDIgram
       - if user_signed_in?
-        %nav.my-2.my-md-0.mr-md-3= link_to 'Edit profile', edit_user_registration_path, :class => "btn btn-outline-primary"
+        %nav.my-2.my-md-0.mr-md-3= link_to 'Setting', edit_user_registration_path, :class => "btn btn-outline-primary"
+
+        %nav.my-2.my-md-0.mr-md-3= link_to 'Edit your profile', edit_path, :class => "btn btn-outline-primary"
+
         %nav.my-2.my-md-0.mr-md-3= link_to "Logout", destroy_user_session_path, method: :delete,  :class => "btn btn-outline-primary"
       - else
         %nav.my-2.my-md-0.mr-md-3= link_to "Registration", registrations_path, :class => "btn btn-outline-primary"

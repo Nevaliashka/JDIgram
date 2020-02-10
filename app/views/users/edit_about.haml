@@ -1,0 +1,6 @@
+%h1 Hellow #{@user.username}
+=form_for(@user, url: edit_path, html: {method: "get"}) do |f|
+  .text-right= f.hidden_field :id, value: @user.id
+  = f.text_field :about, autocomplete: "about"
+  = f.submit "Submit"
+=link_to "Back", home_path

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'users/sessions#destroy'
     get '/forgot', to: 'users/passwords#new'
   end
+  get "/edit", to: 'users#edit_about'
+  get "/about", to: 'users#add_about'
 
 
   devise_for :users, controllers: {registrations: 'users/registrations'}
