@@ -1,6 +1,6 @@
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Forgot your password?", forgot_path, :class => "text-danger" %><br />
+  <%= link_to "Forgot your password?", forgot_path, :class => 'text-danger' %><br />
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>

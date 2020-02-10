@@ -1,8 +1,6 @@
-.container
-  #row.row.justify-content-center.align-items-center
-    #column.col-md-10
-      #box.col-md-14
-      .text-center
-        %br
-        %h1.text-info=link_to "Authorized as #{@user.username}", edit_user_registration_path, :class=>"btn btn-dark", :style=>"float: right;"
-        %br
+%br
+%h1.text-success.text-right="#{@user.username}"
+%h1.text-success.text-right="Your id #{@user.id}"
+-if @user.about
+  %h1.text-success.text-right="#{@user.about}"
+%br

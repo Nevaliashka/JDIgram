@@ -8,6 +8,9 @@ class UsersController < ApplicationController
     "Hellow world"
   end
 
+  def edit
+  end
+
 
   private
 

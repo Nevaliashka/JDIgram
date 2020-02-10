@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
-  authenticated :user do
-    root to: 'home#index', as: 'home'
-  end
-  unauthenticated :user do
-    root 'home#front'
-  end
-
+  root to: 'home#index', as: 'home'
+  resources :posts
   resources :persons
 
   devise_scope :user do
@@ -14,6 +9,7 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'users/sessions#destroy'
     get '/forgot', to: 'users/passwords#new'
   end
+
 
   devise_for :users, controllers: {registrations: 'users/registrations'}
 

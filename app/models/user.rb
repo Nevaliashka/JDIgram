@@ -11,8 +11,6 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
 
 
-  mount_uploader :avatar, AvatarUploader
-  mount_uploader :cover, AvatarUploader
 
 
   def self.find_for_authentication(conditions)
