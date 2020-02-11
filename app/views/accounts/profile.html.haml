@@ -1,0 +1,8 @@
+.container
+  .row
+    .col-4
+    .col-8
+      %h1= @account.full_name
+      .profile-stats #{@account.posts.count} posts
+      .profile-stats #{@account.total_followers} followers
+      .profile-stats #{@account.total_following} following

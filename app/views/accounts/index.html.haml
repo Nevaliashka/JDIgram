@@ -1,0 +1,12 @@
+.container
+  .row
+    .col-6
+      -@posts.each do |post|
+        %br
+        .post
+          .post-header
+            = post.account.username
+            = post.created_at
+          .post-body
+            =image_tag post.image.url, class: "img img-fluid"
+

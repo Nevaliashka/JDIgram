@@ -9,9 +9,9 @@
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           .text-danger= devise_error_messages!
           .field
-            %label.text-info{:for => "username"} Username or Email:
+            %label.text-info{:for => "email"} Email:
             %br/
-            = f.text_field :login, autofocus: true, :class => "form-control", size: 30 , :placeholder => "Username or Email"
+            = f.email_field :email, autofocus: true, :class => "form-control", size: 30 , :placeholder => "Email"
             %br/
           .field
             %label.text-info{:for => "password"} Password:
@@ -23,7 +23,7 @@
               = f.label :remember_me
           .actions
             = f.submit "Log in", :class => "btn btn-outline-info"
-            = link_to "Registration", registrations_path, :class => "btn btn-info", :style=>"float: right;"
+            = link_to "Registration", new_account_registration_path, :class => "btn btn-info", :style=>"float: right;"
         = render "devise/shared/links"
 
 
