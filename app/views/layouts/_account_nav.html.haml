@@ -1,5 +1,4 @@
-%h5.my-0.mr-md-auto.font-weight-normal= link_to 'Main page',dashboard_path, data: { confirm: "Are you sure?" }, :class => 'btn btn-outline-dark'
+%h5.my-0.mr-md-auto.font-weight-normal= link_to 'My posts',dashboard_path,  :class => 'btn btn-outline-dark'
 %nav.my-2.my-md-0.mr-md-3= link_to 'Add post', new_post_path, :class => "btn btn-outline-primary"
-%nav.my-2.my-md-0.mr-md-3= link_to 'Edit your profile', edit_account_registration_path, :class => "btn btn-outline-primary"
 %nav.my-2.my-md-0.mr-md-3= link_to "My profile", profile_path(current_account.username),  :class => "btn btn-outline-primary"
-%nav.my-2.my-md-0.mr-md-3= link_to "Logout", destroy_account_session_path, method: :delete,  :class => "btn btn-outline-primary"
+%nav.my-2.my-md-0.mr-md-3= link_to "Logout", destroy_account_session_path, method: :delete, data: { confirm: "Are you sure?" },  :class => "btn btn-outline-primary"

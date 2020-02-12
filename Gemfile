@@ -24,6 +24,10 @@ gem 'devise'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
+gem 'autoprefixer-rails'
+gem 'jquery-rails'
+gem 'font-awesome-rails'
+gem 'font-awesome-sass'
 
 
 
@@ -61,7 +65,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   # Gem which I added
-  gem "figaro"
+  gem 'figaro'
 end
 
 group :test do

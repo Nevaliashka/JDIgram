@@ -2,3 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body{
+
+}
+
+.account-sunnary{
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.profile-pic{
+  border-top-left-radius: 50% 50%;
+  border-top-right-radius: 50% 50%;
+  border-bottom-right-radius: 50% 50%;
+  border-bottom-left-radius: 50% 50%;
+}
+
+.profile-stats{
+  width: 120px;
+  float: left;
+}
+
+.follower-suggestions{
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}

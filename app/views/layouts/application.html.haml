@@ -2,9 +2,12 @@
   %title JDIgram
   = csrf_meta_tags
   = csp_meta_tag
-  = stylesheet_link_tag    'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css'
 
+  = stylesheet_link_tag    'application'
+  = stylesheet_link_tag    'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css'
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
+
   %body
     .d-flex.flex-column.flex-md-row.align-items-center.p-3.px-md-4.mb-3.bg-white.border-bottom.box-shadow
       - if account_signed_in?
@@ -12,6 +15,4 @@
       -else
         =render "layouts/public_nav"
     .container
-      .row
-        .col-lg-12
-          = yield
+      = yield

@@ -14,37 +14,37 @@
             %label.text-info{:for => "username"} Username:
             %br/
             = f.text_field :username, autofocus: true,  :class => "form-control", size: 30 , :placeholder => "Username"
-            %br/
+
           .field
             %label.text-info{:for => "first_name"} First name:
             %br/
             = f.text_field :first_name, autofocus: true, :class => "form-control", size: 30 , :placeholder => "First name"
-            %br/
+
           .field
             %label.text-info{:for => "last_name"} Last name:
             %br/
             = f.text_field :last_name, autofocus: true,  :class => "form-control", size: 30 , :placeholder => "Last name"
-            %br/
+
 
           .field
             %label.text-info{:for => "email"} Email:
             %br/
             = f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control", size: 30 , :placeholder => "Email"
-            %br/
+
           .field
             %label.text-info{:for => "password"} Password:
             %br/
             - if @minimum_password_length
               = f.password_field :password, autocomplete: "off", :class => "form-control", :placeholder => "#{@minimum_password_length} characters minimum"
-              %br/
+
             - else
               = f.password_field :password, autocomplete: "off", :class => "form-control",  :placeholder => ""
-              %br/
+
           .field
             %label.text-info{:for => "password_confirmation"} Confirm your password:
             %br/
             = f.password_field :password_confirmation, autocomplete: "off", :class => "form-control", size: 30 , :placeholder => "Password confirmation"
-            %br/
+
           %br/
           .actions
             = f.submit "Registration", :class => "btn btn-info"

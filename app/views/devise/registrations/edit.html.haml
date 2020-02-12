@@ -1,7 +1,7 @@
 .text-center
-  %br
+
   %h2.text-info Edit your profile
-  %br
+
 .container
   #row.row.justify-content-center.align-items-center
     #column.col-md-6
@@ -9,49 +9,59 @@
         = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f|
           .text-danger= devise_error_messages!
           .field
+
             %label.text-info{:for => "image"} Avatar:
             %br/
             =f.file_field :image, class: "form-control"
+            =f.hidden_field :image_cache
 
-            %br/
           .field
             %label.text-info{:for => "username"} Username:
             %br/
             = f.text_field :username, autofocus: true,  :class => "form-control", size: 30 , :placeholder => "Username"
-            %br/
+
           .field
             %label.text-info{:for => "first_name"} First name:
             %br/
             = f.text_field :first_name, autofocus: true, :class => "form-control", size: 30 , :placeholder => "First name"
-            %br/
+
           .field
             %label.text-info{:for => "last_name"} Last name:
             %br/
             = f.text_field :last_name, autofocus: true,  :class => "form-control", size: 30 , :placeholder => "Last name"
+
+          .field
+            %label.text-info{:for => "description"} Description:
             %br/
+            = f.text_area :description, autofocus: true,  :class => "form-control", size: 30 , :placeholder => "Description"
+          .field
+            %label.text-info{:for => "website"} Website:
+            %br/
+            = f.text_field :website, autofocus: true,  :class => "form-control", size: 30 , :placeholder => "Website"
+
 
 
           .field
             %label.text-info{:for => "email"} Email:
             %br/
             = f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control", size: 30 , :placeholder => "Email"
-            %br/
+
           .field
             %label.text-info{:for => "current_password"} Current password:
             %br/
             = f.password_field :current_password, autofocus: true, autocomplete: "current_password", :class => "form-control", size: 30 , :placeholder => "Current password"
-            %br/
+
 
           .field
             %label.text-info{:for => "password"} New password:
             %br/
             = f.password_field :password, autocomplete: "off", :class => "form-control",  :placeholder => "May be empty"
-            %br/
+
           .field
             %label.text-info{:for => "password_confirmation"} New password confirmation:
             %br/
             = f.password_field :password_confirmation, autofocus: true, autocomplete: "password_confirmation", :class => "form-control", size: 30 , :placeholder => "Password confirmation"
-            %br/
+
           .actions
             .d-flex.flex-column.flex-md-row
               %nav.my-0.mr-md-auto.font-weight-normal= f.submit "Update", :class => "btn btn-info"

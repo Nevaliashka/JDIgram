@@ -11,21 +11,10 @@
 // about supported directives.
 //
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "font-awesome";
-@import "jquery.datetimepicker";
-@import "*";
+
 //= require rails-ujs
 //= require activestorage
-
-//= require_tree .
-//= require bootstrap-sprockets
-
-
-
 //= require jquery
-//= require jquery_ujs
-//= require bootstrap
-//= require bindWithDelay
-//= require jquery.datetimepicker
+//= require_tree .
+
+

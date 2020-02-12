@@ -7,6 +7,7 @@ class AccountsController < ApplicationController
   end
 
   def profile
+    @posts = @account.posts.active
 
   end
 

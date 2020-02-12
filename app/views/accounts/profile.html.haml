@@ -1,8 +1,13 @@
 .container
   .row
     .col-4
-    .col-8
+      = image_tag @account.image.url, width: "200px", height: "200px", class: "profile-pic"
+    .col-8.text-left
       %h1= @account.full_name
       .profile-stats #{@account.posts.count} posts
       .profile-stats #{@account.total_followers} followers
       .profile-stats #{@account.total_following} following
+      = link_to 'Edit profile', edit_account_registration_path, :class => "btn btn-outline-primary"
+      %p=@account.full_name
+      =simple_format @account.description
+      %p=link_to @account.website if @account.website.present?

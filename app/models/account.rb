@@ -3,8 +3,10 @@ class Account < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+  mount_uploader :image, ImageUploader
   has_many :posts
+
+  validates :username, presence: true, uniqueness: true
 
   def full_name
     "#{first_name} #{last_name}"
