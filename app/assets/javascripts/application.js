@@ -21,55 +21,47 @@
 
 
 
+//FOR PREVIEW
 
-$("#inputGroupFile01").change(function(event) {
-  RecurFadeIn();
-  readURL(this);
-});
-$("#inputGroupFile01").on('click',function(event){
-  RecurFadeIn();
-});
-function readURL(input) {
-  console.log('yeeaah')
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    var filename = $("#inputGroupFile01").val();
-    filename = filename.substring(filename.lastIndexOf('\\')+1);
-    reader.onload = function(e) {
-      debugger;
-      $('#blah').attr('src', e.target.result);
-      $('#blah').hide();
-      $('#blah').fadeIn(500);
-      $('.custom-file-label').text(filename);
-    }
-    reader.readAsDataURL(input.files[0]);
-  }
-  $(".alert").removeClass("loading").hide();
-}
-function RecurFadeIn(){
-  console.log('ran');
-  FadeInAlert("Wait for it...");
-}
-function FadeInAlert(text){
-  $(".alert").show();
-  $(".alert").text(text).addClass("loading");
-}
+      $("#inputGroupFile01").change(function(event) {
+        RecurFadeIn();
+        readURL(this);
+      });
+      $("#inputGroupFile01").on('click',function(event){
+        RecurFadeIn();
+      });
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          var filename = $("#inputGroupFile01").val();
+          filename = filename.substring(filename.lastIndexOf('\\')+1);
+          reader.onload = function(e) {
+            $('#blah').attr('src', e.target.result);
+            $('#blah').hide();
+            $('#blah').fadeIn(500);
+            $('.custom-file-label').text(filename);
+          }
+          reader.readAsDataURL(input.files[0]);
+        }
+        $(".alert").removeClass("loading").hide();
+      }
 
 
 
 
-$(function(){
-  console.log('yeeaah');
-  // jquery loaded
-  $(".post-like").on("click", function(){
-    var post_id = $(this).data("id");
-    $.ajax({
-      url: "post/like/"+post_id,
-      method: "GET"
-    }).done(function(response){
-      console.log(response);
-    })
-  })
-});
+//FOR LIKES
+
+      $(function(){
+        // jquery loaded
+        $(".post-like").on("click", function(){
+          var post_id = $(this).data("id");
+          $.ajax({
+            url: "/post/like/"+post_id,
+            method: "GET"
+          }).done(function(response){
+            console.log(response);
+          })
+        })
+      });
 
 

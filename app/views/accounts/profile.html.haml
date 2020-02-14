@@ -1,18 +1,26 @@
 .container
   .row
     .col-4
-      -if @account.image?
-        = image_tag @account.image.url, width: "200px", height: "200px", class: "profile-pic"
+      =profile_picture @account, 200
     .col-8.text-left
-      %h1= @account.full_name
-      .profile-stats #{@account.posts.count} posts
-      .profile-stats #{@account.total_followers} followers
-      .profile-stats #{@account.total_following} following
-      -if current_account.username == @account.username
-        = link_to 'Edit profile', edit_account_registration_path, :class => "btn btn-outline-primary"
-      -else
-        %br
-          %br
+      .row
+        .col-6
+          %h1
+            -if current_account.username == @account.username
+              = link_to 'Edit profile', edit_account_registration_path, :class => "btn btn-outline-info float-right"
+            = @account.full_name
+
+      .row.profile-stats
+        .col-4
+          =@account.posts.count
+          posts
+        .col-4
+          =@account.total_followers
+          followers
+        .col-4
+          =@account.total_following
+          following
+
       %p=@account.full_name
       =simple_format @account.description
       %p=link_to @account.website if @account.website.present?

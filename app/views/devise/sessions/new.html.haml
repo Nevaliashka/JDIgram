@@ -6,17 +6,16 @@
   #row.row.justify-content-center.align-items-center
     #column.col-md-6
       #box.col-md-12
-        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        = form_for(resource, as: resource_name,  url: session_path(resource_name)) do |f|
           .text-danger= devise_error_messages!
+          %label.text-info{:for => "email"} <i class="fa fa-envelope"></i> Email:
           .field
-            %label.text-info{:for => "email"} Email:
-            %br/
-            = f.email_field :email, autofocus: true, :class => "form-control", size: 30 , :placeholder => "Email"
+            = f.email_field :email, :class => "form-control", size: 30 , :placeholder => 'Email'
             %br/
           .field
-            %label.text-info{:for => "password"} Password:
+            %label.text-info{:for => "password"} <i class="fa fa-lock"></i> Password:
             %br/
-            = f.password_field :password, autocomplete: "off", :class => "form-control", size: 30 ,:placeholder => "Password"
+            = f.password_field :password, autocomplete: "off", :class => "form-control", size: 30 ,:placeholder => 'Password'
           - if devise_mapping.rememberable?
             .field
               = f.check_box :remember_me

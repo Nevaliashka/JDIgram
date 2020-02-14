@@ -1,14 +1,9 @@
-%i.fa.fa-home.fa-fw
-%i.fa.fa-bell
-
-
 = form_for @post, html: {multipart: true} do |f|
-
   .form-group
     =f.label :image
     =f.file_field :image, :onchange => "readURL(this);", :type => "file"
     =f.hidden_field :image_cache
-    .contain.animated.bounce
+    .contain
       %img#blah{:align => "left" }/
       %input#inputGroupFile01.imgInp.custom-file-input{"aria-describedby" => "inputGroupFileAddon01", :type => "file"}/
   .form-group

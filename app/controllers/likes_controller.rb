@@ -19,6 +19,7 @@ class LikesController < ApplicationController
         else
           @success = false
         end
+        @post_likes = Post.find(@post_id).total_likes_count
         render "posts/like"
       }
     end
