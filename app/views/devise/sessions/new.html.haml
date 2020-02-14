@@ -11,7 +11,7 @@
           .field
             %label.text-info{:for => "email"} Email:
             %br/
-            .far.fa-address-book= f.email_field :email, autofocus: true, :class => "form-control", size: 30 , :placeholder => "Email"
+            = f.email_field :email, autofocus: true, :class => "form-control", size: 30 , :placeholder => "Email"
             %br/
           .field
             %label.text-info{:for => "password"} Password:

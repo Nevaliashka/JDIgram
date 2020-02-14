@@ -1,12 +1,43 @@
 .container
-  .row
-    .col-6
-      -@posts.each do |post|
-        %br
-        .post
-          .post-header
-            = post.account.username
-            = post.created_at
-          .post-body
-            =image_tag post.image.url, class: "img img-fluid"
+  -@posts.each do |post|
+    .row
+      .col-6
+        .insta-post
+          .post-meta
+            -if post.account.image?
+              =link_to image_tag(post.account.image.thumb.url,width: "50px", height: "50px", class: "profile-pic"), profile_path(post.account.username)
+            =link_to post.account.username, profile_path(post.account.username), :class => "text-dark"
+          -if  post.image?
+            =image_tag post.image.url, width: "600px", height: "600px", class: "img img-fluid"
+
+          .post-details
+            .post-actions
+              %i{:class => "fa fa-heart like-#{post.id}#{'active' if post_liked_by_user?(post.id)} fa-2x post-like", "data-id" => post.id}
+              %i.fa.fa-comment.fa-2x
+            %p
+              %strong{:id => "post-#{post.id}-likes"}
+                likes
+                %p
+                  =link_to post.account.username, profile_path(post.account.username), :class => "text-dark"
+            = simple_format post.description
+            %p.text-muted
+              = time_ago_in_words post.created_at
+              ago
+      .col-4
+        .account-summary
+          %br
+            %br
+              %p
+                =link_to image_tag(current_account.image.thumb.url,width: "50px", height: "50px", class: "profile-pic"), profile_path(current_account.username) if current_account.image.present?
+                %strong=link_to current_account.username, profile_path(post.account.username)
+              %br
+                =current_account.full_name
+            .follower-suggestions
+              =link_to "View All", "#",  class: "float-right text-dark"
+              %p.text-muted Suggestion for you
+
+
+
+
+
 

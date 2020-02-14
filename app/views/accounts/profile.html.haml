@@ -1,13 +1,24 @@
 .container
   .row
     .col-4
-      = image_tag @account.image.url, width: "200px", height: "200px", class: "profile-pic"
+      -if @account.image?
+        = image_tag @account.image.url, width: "200px", height: "200px", class: "profile-pic"
     .col-8.text-left
       %h1= @account.full_name
       .profile-stats #{@account.posts.count} posts
       .profile-stats #{@account.total_followers} followers
       .profile-stats #{@account.total_following} following
-      = link_to 'Edit profile', edit_account_registration_path, :class => "btn btn-outline-primary"
+      -if current_account.username == @account.username
+        = link_to 'Edit profile', edit_account_registration_path, :class => "btn btn-outline-primary"
+      -else
+        %br
+          %br
       %p=@account.full_name
       =simple_format @account.description
       %p=link_to @account.website if @account.website.present?
+  .row.profile-post
+    -@posts.each do |post|
+      .col-4
+        .insta-post
+          %br
+          =image_tag post.image.url, class: "img img-fluid"

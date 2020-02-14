@@ -1,4 +1,31 @@
-=form_for @post, html: {multipart: true} do |f|
-  =f.file_field :image
-  =f.hidden_field :image_cache
-  =f.submit "Save post", class:"btn btn-success"
+%i.fa.fa-home.fa-fw
+%i.fa.fa-bell
+
+
+= form_for @post, html: {multipart: true} do |f|
+
+  .form-group
+    =f.label :image
+    =f.file_field :image, :onchange => "readURL(this);", :type => "file"
+    =f.hidden_field :image_cache
+    .contain.animated.bounce
+      %img#blah{:align => "left" }/
+      %input#inputGroupFile01.imgInp.custom-file-input{"aria-describedby" => "inputGroupFileAddon01", :type => "file"}/
+  .form-group
+    =f.label :description
+    =f.text_area :description, class: "form-control"
+  .form-group
+    =f.submit "Save post", class:"btn btn-success"
+
+
+
+
+
+
+
+
+
+
+
+
+

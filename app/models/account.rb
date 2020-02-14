@@ -4,7 +4,9 @@ class Account < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   mount_uploader :image, ImageUploader
+
   has_many :posts
+  has_many :likes
 
   validates :username, presence: true, uniqueness: true
 

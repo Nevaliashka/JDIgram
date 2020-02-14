@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get '/login', to: 'devise/sessions#new'
   end
 
+  get 'post/like/:post_id' => 'likes#save_like', as: :like_post
   get '/dashboard' => "accounts#index"
   get 'profile/:username', to: 'accounts#profile', as: :profile
 end
