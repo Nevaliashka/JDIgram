@@ -3,18 +3,30 @@ class AccountsController < ApplicationController
   before_action :set_account, only: [:profile]
 
   def index
-    @posts = Post.active
-    @comment = Comment.new
+    @accounts = Account.where(["username LIKE ?", "%#{params[:search]}%"])
+  end
 
+  def dashboard
     following_ids = Follower.where(follower_id: current_account.id).map(&:following_id)
     following_ids << current_account.id
     @follower_suggestions = Account.where.not(id: following_ids)
 
+    @posts = Post.includes(:account).where(account_id: following_ids).active
+    @comment = Comment.new
+  end
+
+  def friendlist
+    @friends = Follower.where(follower_id: current_account.id)
   end
 
   def profile
     @posts = @account.posts.active
+  end
 
+  def delete_friend
+    puts "\n\n params: #{params} \n\n"
+    Follower.find(params[:follower_id]).delete
+    redirect_to friendlist_path
   end
 
   def follow_account

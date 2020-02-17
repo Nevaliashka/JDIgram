@@ -16,6 +16,7 @@
 //= require rails-ujs
 //= require bootstrap-sprockets
 //= require bootstrap.min
+//= require turbolinks
 //= require activestorage
 //= require_tree .
 
@@ -53,6 +54,9 @@
 
       $(function(){
         // jquery loaded
+        $(".post-comment").on("click", function(){
+          $("#comment_comment");
+        });
         $(".post-like").on("click", function(){
           var post_id = $(this).data("id");
           $.ajax({

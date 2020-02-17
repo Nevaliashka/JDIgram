@@ -8,6 +8,10 @@
           %h1
             -if current_account.username == @account.username
               = link_to 'Edit profile', edit_account_registration_path, :class => "btn btn-outline-info float-right"
+            -else
+              =form_tag follow_account_path, method: :post, class: "float-right" do
+                = hidden_field_tag :follow_id, @account.id
+                = submit_tag "Follow", class: "btn btn-info btn-sm"
             = @account.full_name
 
       .row.profile-stats
@@ -27,6 +31,11 @@
   .row.profile-post
     -@posts.each do |post|
       .col-4
-        .insta-post
-          %br
-          =image_tag post.image.url, class: "img img-fluid"
+        .insta-post.post-square{:style=> "background: url(#{post.image.url}) no-repeat center top" }
+          =link_to post_path(post) do
+            .post-stats
+              .inner
+                %i.fa.fa-heart= post.total_likes_count
+                %i.fa.fa-comment.m-l-15= post.total_comments_count
+            %br
+

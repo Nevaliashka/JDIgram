@@ -8,9 +8,9 @@
       #box.col-md-12
         = form_for(resource, as: resource_name,  url: session_path(resource_name)) do |f|
           .text-danger= devise_error_messages!
-          %label.text-info{:for => "email"} <i class="fa fa-envelope"></i> Email:
+          %label.text-info{:for => "login"} <i class="fa fa-envelope"></i> Email or <i class="fa fa-user"></i> Username:
           .field
-            = f.email_field :email, :class => "form-control", size: 30 , :placeholder => 'Email'
+            = f.text_field :login, :class => "form-control", size: 30 , :placeholder => 'Email or Username'
             %br/
           .field
             %label.text-info{:for => "password"} <i class="fa fa-lock"></i> Password:

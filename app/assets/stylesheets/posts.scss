@@ -28,7 +28,7 @@
     cursor: pointer;
   }
   i.active{
-    color: #555;
+    color: #ff0000;
   }
   i:hover{
     color: #999;
@@ -46,7 +46,7 @@
 }
 
 .comments-feed{
-  height: 200px;
+  height: 300px;
   overflow: scroll;
 }
 
@@ -54,4 +54,32 @@
   border-top: 1px solid #dddddd;
   padding-top: 20px;
   margin-top: 20px;
+}
+
+.post-square{
+  width: 290px;
+  height: 290px;
+  overflow: hidden;
+  background-size: cover !important;
+}
+
+.post-stats {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  color: #ffffff;
+  display: none;
+
+
+  .inner{
+    padding-top: 45%;
+  }
+
+}
+
+.insta-post:hover{
+  .post-stats {
+    display: block;
+  }
 }

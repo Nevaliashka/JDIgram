@@ -5,6 +5,8 @@ class Account < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   mount_uploader :image, ImageUploader
 
+  attr_accessor :login
+
   has_many :posts
   has_many :likes
 
@@ -20,5 +22,10 @@ class Account < ApplicationRecord
 
   def total_following
     Follower.where(following_id: self.id).count
+  end
+
+  def self.find_for_authentication(conditions)
+    login = conditions.delete(:login)
+    where(conditions).where(["username = :value OR email = :value", { :value => login }]).first
   end
 end

@@ -1,4 +1,14 @@
 %h5.my-0.mr-md-auto.font-weight-normal= link_to 'First news feed', dashboard_path,  :class => 'btn btn-outline-dark'
+%nav.my-2.my-md-0.mr-md-3.mt-md-3
+  = form_tag usery_path, :method => 'get'  do
+    .input-group.md-form
+      = text_field_tag :search, params[:search], :class=> "form-control", :placeholder=>"Search"
+      .input-group-append
+        = submit_tag :Find do
+          %i.fa.fa-envelope
 %nav.my-2.my-md-0.mr-md-3= link_to 'Add post', new_post_path, :class => "btn btn-outline-primary"
+%nav.my-2.my-md-0.mr-md-3= link_to 'Friendlist', friendlist_path, :class => "btn btn-outline-primary"
 %nav.my-2.my-md-0.mr-md-3= link_to "My profile", profile_path(current_account.username),  :class => "btn btn-outline-primary"
 %nav.my-2.my-md-0.mr-md-3= link_to "Logout", destroy_account_session_path, method: :delete, data: { confirm: "Are you sure?" },  :class => "btn btn-outline-primary"
+
+

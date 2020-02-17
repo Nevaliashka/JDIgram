@@ -5,7 +5,8 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.account_id = current_account.id if account_signed_in?
     if @comment.save
-      redirect_to dashboard_path, flash: { success: "Comment was created successfully!"}
+      return_url =params[:comment][:return_to].present? ? post_path(@comment.post_id) : dashboard_path
+      redirect_to return_url, flash: { success: "Comment was created successfully!"}
     else
       redirect_to dashboard_path, flash: { danger: "Comment was not saved!"}
       puts @comment.errors.full_messages
@@ -20,6 +21,6 @@ class CommentsController < ApplicationController
 
 
   def comment_params
-    params.require(:comment).permit(:comment, :post_id)
+    params.require(:comment).permit(:comment, :post_id, :return_to)
   end
 end

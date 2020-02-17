@@ -1,53 +1,15 @@
-.container
-  -@posts.each do |post|
-    .row
-      .col-6
-        .insta-post
-          .post-meta
-            =link_to profile_picture(post.account), profile_path(post.account.username)
-            =link_to post.account.username, profile_path(post.account.username), :class => "text-dark"
-          -if  post.image?
-            =image_tag post.image.url,  class: "img img-fluid"
+-@accounts.each do |account|
+  .row
+    .col-sm-3.col-lg-2
+      =link_to profile_picture(account, 40), profile_path(account.username)
+      =link_to account.username, profile_path(account.username), :class => "text-dark"
+    .col-sm-9.col-lg-10
+      =form_tag follow_account_path, method: :post, class: "float-right" do
+        = hidden_field_tag :follow_id, account.id
+        = submit_tag "Follow", class: "btn btn-info btn-sm"
 
-          .post-details
-            .post-actions
-              %i{:class => "fa fa-heart like-#{post.id}#{'active' if post_liked_by_user?(post.id)} fa-2x post-like", "data-id" => post.id}
-              =link_to post_path(post.id) do
-                %i.fa.fa-comment.fa-2x.post-comment
-            %p
-              %strong{:id => "post-#{post.id}-likes"}
-                = post.total_likes_count
-                likes
-            %p
-              %strong{:id => "post-#{post.id}-comments"}= link_to post.account.username, profile_path(post.account.username), class: "text-dark"
-              %p
-                =link_to post.account.username, profile_path(post.account.username), :class => "text-dark"
-            = simple_format post.description
-            %p.text-muted
-              = time_ago_in_words post.created_at
-              ago
-            .comments-feed
-              =render 'posts/comments', post: post
-            .comment-box
-              =form_for @comment do |f|
-                =f.hidden_field :post_id, value: post.id
-                .input-group.mb-3
-                  =f.text_field :comment, placeholder: "Add comment here...", class: "form-control post-comment"
-                  .input-group-append
-                    =f.submit "Post", class: "btn btn-secondary float-right"
 
-      .col-4
-        .account-summary
-          %p.m-0.class-padding-15
-            =link_to image_tag(current_account.image.thumb.url,width: "50px", height: "50px", class: "profile-pic float-left m-r-15"), profile_path(current_account.username) if current_account.image.present?
-            %strong=link_to current_account.username, profile_path(post.account.username)
-            %br
-              =current_account.full_name
 
-          .follower-suggestions
-            =link_to "View All", "#",  class: "float-right text-dark"
-            %p.text-muted Suggestion for you
-            =render "accounts/follower_suggestions"
 
 
 
