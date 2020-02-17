@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   get 'profile/:username', to: 'accounts#profile', as: :profile
   post 'follow/account' => 'accounts#follow_account', as: :follow_account
   get 'friendlist' => 'accounts#friendlist', as: :friendlist
+  get 'subscribers' => 'accounts#subscribers', as: :subscribers
   delete '/deletefriend/:follower_id', :to => 'accounts#delete_friend', as: :destroy_friend
 end

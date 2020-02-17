@@ -1,0 +1,6 @@
+-@subscribers.each do |friend|
+  -i = Account.find(friend.follower_id)
+  .account-summary
+    %p.m-0.class-padding-15
+      =link_to profile_picture(i, 70), profile_path(i.username)
+      =link_to i.username, profile_path(i.username), :class => "text-dark"

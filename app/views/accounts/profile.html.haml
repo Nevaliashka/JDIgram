@@ -19,8 +19,7 @@
           =@account.posts.count
           posts
         .col-4
-          =@account.total_followers
-          followers
+          =link_to "#{@account.total_followers} followers", friendlist_path
         .col-4
           =@account.total_following
           following

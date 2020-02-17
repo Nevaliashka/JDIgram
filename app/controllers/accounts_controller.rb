@@ -19,6 +19,10 @@ class AccountsController < ApplicationController
     @friends = Follower.where(follower_id: current_account.id)
   end
 
+  def subscribers
+    @subscribers = Follower.where(following_id: current_account.id)
+  end
+
   def profile
     @posts = @account.posts.active
   end
