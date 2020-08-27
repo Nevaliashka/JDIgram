@@ -50,14 +50,16 @@
 
 
 
+
+
+
+
 //FOR LIKES
 
       $(function(){
         // jquery loaded
-        $(".post-comment").on("click", function(){
-          $("#comment_comment");
-        });
         $(".post-like").on("click", function(){
+
           var post_id = $(this).data("id");
           $.ajax({
             url: "/post/like/"+post_id,
@@ -66,6 +68,9 @@
             console.log(response);
           })
         })
+        $(".post-comment").on("click", function(){
+          $("#comment_comment");
+        });
       });
 
 
