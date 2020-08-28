@@ -21,9 +21,11 @@
     #form1{
         width:auto;
     }
+
     .alert{
         text-align:center;
     }
+
     #blah{
         max-height:256px;
         height:auto;
@@ -33,6 +35,7 @@
         margin-right: auto;
         padding:5px;
     }
+
     #img_contain{
         border-radius:5px;
         /*  border:1px solid grey;*/

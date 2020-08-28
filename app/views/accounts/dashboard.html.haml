@@ -13,7 +13,7 @@
             .post-actions
               %i{:class => "fa fa-heart like-#{post.id}#{'active' if post_liked_by_user?(post.id)} fa-2x post-like", "data-id" => post.id}
               =link_to post_path(post.id) do
-                %i.fa.fa-comment.fa-2x.post-comment
+                %i.fa.fa-comment.fa-2x.post-comment.forcom
             %p
               %strong{:id => "post-#{post.id}-likes"}
                 = post.total_likes_count

@@ -16,9 +16,7 @@ class CommentsController < ApplicationController
   def show
   end
 
-
   private
-
 
   def comment_params
     params.require(:comment).permit(:comment, :post_id, :return_to)

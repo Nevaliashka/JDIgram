@@ -12,15 +12,11 @@
 //
 
 //= require jquery.min
-
 //= require rails-ujs
 //= require bootstrap-sprockets
 //= require bootstrap.min
-//= require turbolinks
 //= require activestorage
 //= require_tree .
-
-
 
 //FOR PREVIEW
 
@@ -47,30 +43,20 @@
         $(".alert").removeClass("loading").hide();
       }
 
-
-
-
-
-
-
-
 //FOR LIKES
 
       $(function(){
         // jquery loaded
+        $(".post-comment").on("click", function(){
+          $("#comment_comment");
+        });
         $(".post-like").on("click", function(){
-
           var post_id = $(this).data("id");
           $.ajax({
-            url: "/post/like/"+post_id,
+            url: "/post/like/" + post_id,
             method: "GET"
           }).done(function(response){
             console.log(response);
           })
         })
-        $(".post-comment").on("click", function(){
-          $("#comment_comment");
-        });
       });
-
-

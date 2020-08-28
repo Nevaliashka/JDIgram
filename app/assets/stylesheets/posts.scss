@@ -22,13 +22,16 @@
 
 .post-actions{
   margin-bottom: 20px;
-  color: #ddd;
+  color: #dddddd;
   i{
     margin-right: 10px;
     cursor: pointer;
   }
   i.active{
     color: #ff0000;
+  }
+  i.forcom{
+    color: #dddddd;
   }
   i:hover{
     color: #999;
@@ -71,11 +74,9 @@
   color: #ffffff;
   display: none;
 
-
   .inner{
     padding-top: 45%;
   }
-
 }
 
 .insta-post:hover{

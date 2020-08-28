@@ -8,10 +8,8 @@ class Comment < ApplicationRecord
 
   attr_accessor :return_to
 
-
   after_destroy :decrease_post_comment_counter
   after_create :increase_post_comment_counter
-
 
   private
 

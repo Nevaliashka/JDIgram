@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   get 'friendlist' => 'accounts#friendlist', as: :friendlist
   get 'subscribers' => 'accounts#subscribers', as: :subscribers
   delete '/deletefriend/:follower_id', :to => 'accounts#delete_friend', as: :destroy_friend
+
 end

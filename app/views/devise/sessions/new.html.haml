@@ -9,24 +9,22 @@
         = form_for(resource, as: resource_name,  url: session_path(resource_name)) do |f|
           .text-danger= devise_error_messages!
           %label.text-info{:for => "login"} <i class="fa fa-envelope"></i> Email or <i class="fa fa-user"></i> Username:
+
           .field
             = f.text_field :login, :class => "form-control", size: 30 , :placeholder => 'Email or Username'
             %br/
+
           .field
             %label.text-info{:for => "password"} <i class="fa fa-lock"></i> Password:
             %br/
             = f.password_field :password, autocomplete: "off", :class => "form-control", size: 30 ,:placeholder => 'Password'
+
           - if devise_mapping.rememberable?
             .field
               = f.check_box :remember_me
               = f.label :remember_me
+
           .actions
             = f.submit "Log in", :class => "btn btn-outline-info"
             = link_to "Registration", new_account_registration_path, :class => "btn btn-info", :style=>"float: right;"
         = render "devise/shared/links"
-
-
-
-
-
-

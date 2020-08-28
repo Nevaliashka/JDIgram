@@ -1,7 +1,7 @@
 -@friends.each do |friend|
   -i = Account.find(friend.following_id)
   .account-summary
-    %p.m-0.class-padding-15
+    %i
       =link_to profile_picture(i, 70), profile_path(i.username)
       =link_to i.username, profile_path(i.username), :class => "text-dark"
-      =link_to 'Delete from friend', destroy_friend_path(friend), method: :delete, class: "btn btn-danger btn-sm float-right"
+      =link_to 'Delete from friend', destroy_friend_path(friend), method: :delete, class: "btn btn-danger btn-sm float-right delete", data: { remote: true}

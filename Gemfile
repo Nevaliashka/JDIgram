@@ -28,6 +28,7 @@ gem 'autoprefixer-rails'
 gem 'jquery-rails'
 gem 'font-awesome-rails'
 gem 'font-awesome-sass'
+gem 'responders'
 # gem 'less-rails-fontawesome'
 # gem 'therubyracer'
 
