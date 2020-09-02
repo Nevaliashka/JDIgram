@@ -4,8 +4,7 @@
       .col-sm-3.col-lg-2
         =link_to profile_picture(account, 40), profile_path(account.username)
       .col-sm-9.col-lg-10
-        =form_tag follow_account_path, method: :post, class: "float-right" do
-          = hidden_field_tag :follow_id, account.id
-          = submit_tag "Follow", class: "btn btn-info btn-sm"
+        %i{id: "my-#{account.id}-friend"}
+          =render "accounts/button_add_to_friend", friend: account.id
         =link_to account.username, profile_path(account.username), :class => "text-dark"
     %p=account.created_at < 1.days.ago ? "New to this Application" : "Followed by X users"

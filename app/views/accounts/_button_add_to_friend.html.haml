@@ -1,0 +1,3 @@
+=form_tag follow_account_path, method: :post, class: "float-right follow", remote: true do
+  = hidden_field_tag :follow_id, friend
+  = submit_tag "Follow", class: "btn btn-info btn-sm float-right follow",  remote: true

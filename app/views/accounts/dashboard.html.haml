@@ -19,22 +19,22 @@
                 = post.total_likes_count
                 likes
             %p
-              %strong{:id => "post-#{post.id}-comments"}= link_to post.account.username, profile_path(post.account.username), class: "text-dark"
+              %strong{:id => "post-#{post.id}-author"}= link_to post.account.username, profile_path(post.account.username), class: "text-dark"
               %p
                 =link_to post.account.username, profile_path(post.account.username), :class => "text-dark"
             = simple_format post.description
             %p.text-muted
               = time_ago_in_words post.created_at
               ago
-            .comments-feed
-              =render 'posts/comments', post: post, comments: Comment.includes(:account).where(post_id: post.id)
+            .comments-feed{id: "post-#{post.id}-comments", "data-id" => post.id }
+              = render 'posts/comments', post: post, comments: Comment.includes(:account).where(post_id: post.id)
             .comment-box
-              =form_for @comment do |f|
+              =form_with(model: @comment, remote: true) do |f|
                 =f.hidden_field :post_id, value: post.id
                 .input-group.mb-3
                   =f.text_field :comment, placeholder: "Add comment here...", class: "form-control post-comment"
                   .input-group-append
-                    =f.submit "Post", class: "btn btn-secondary float-right"
+                    =f.submit "Post", class: "btn btn-secondary float-right", remote: true
     .col-4
       .account-summary
         %p.m-0.class-padding-15

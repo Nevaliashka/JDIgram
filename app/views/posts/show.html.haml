@@ -10,11 +10,11 @@
 
       .post-details
         %p
-          %strong{:id => "post-#{@post.id}-comments"}= link_to @post.account.username, profile_path(@post.account.username), class: "text-dark"
+          %strong{:id => "post-#{@post.id}-author"}= link_to @post.account.username, profile_path(@post.account.username), class: "text-dark"
           %p
             =link_to @post.account.username, profile_path(@post.account.username), :class => "text-dark"
 
-        .comments-feed
+        .comments-feed{id: "post-#{@post.id}-comments", "data-id" => @post.id }
           = simple_format @post.description
           = render 'posts/comments', post: @post, comments: @comments
         .post-actions
@@ -29,10 +29,10 @@
           = time_ago_in_words @post.created_at
           ago
         .comment-box
-          =form_for @comment do |f|
+          =form_with(model: @comment, remote: true) do |f|
             =f.hidden_field :post_id, value: @post.id
             =f.hidden_field :return_to, value: "post"
             .input-group.mb-3
               =f.text_field :comment, placeholder: "Add comment here...", class: "form-control post-comment"
               .input-group-append
-                =f.submit "Post", class: "btn btn-secondary float-right"
+                =f.submit "Post", class: "btn btn-secondary float-right", remote: :true

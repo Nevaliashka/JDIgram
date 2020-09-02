@@ -2,8 +2,15 @@ Rails.application.routes.draw do
   root to: "public#homepage" ,as: "home"
   devise_for :accounts
 
-  resources :posts, only: [:new, :create, :show]
-  resources :comments, only: [:create]
+  resources :posts, only: [:new, :create, :show, :destroy]
+  resources :comments, only: [:create, :destroy]
+  resources :conversations, only: [:create] do
+    member do
+      post :close
+    end
+    resources :messages, only: [:create]
+  end
+
 
   devise_scope :account do
     get '/accounts/sign_out', to: 'devise/sessions#destroy'
@@ -11,6 +18,7 @@ Rails.application.routes.draw do
     get '/registrations' => 'accounts/registrations#new'
   end
 
+  get '/messages' => 'accounts#messages', as: :messages
   get 'usery' => 'accounts#index', as: :usery
   get 'post/like/:post_id' => 'likes#save_like', as: :like_post
   get '/dashboard' => "accounts#dashboard", as: :dashboard

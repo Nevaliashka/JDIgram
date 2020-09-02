@@ -6,6 +6,8 @@ class Comment < ApplicationRecord
   validates_presence_of :account_id
   validates_presence_of :post_id
 
+  validates :comment, presence: true
+
   attr_accessor :return_to
 
   after_destroy :decrease_post_comment_counter

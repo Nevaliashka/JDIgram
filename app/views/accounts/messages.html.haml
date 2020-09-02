@@ -1,0 +1,15 @@
+.row
+  .col-md-9
+    %ul#conversations-list
+      - @conversations.each do |conversation|
+        -if conversation.opposed_account(@account).username != current_account.username
+          = render 'conversations/conversation', conversation: conversation, account: current_account
+  .col-md-3
+    .panel.panel-primary
+      .panel-heading
+        %h3.panel-title User list
+      .panel-body
+        %ul
+          -@accounts.each do |friend|
+            -i = Account.find(friend.following_id)
+            %li= link_to i.username, conversations_path(account_id: i), remote: true, method: :post

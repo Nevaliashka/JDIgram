@@ -4,4 +4,5 @@
     %i
       =link_to profile_picture(i, 70), profile_path(i.username)
       =link_to i.username, profile_path(i.username), :class => "text-dark"
-      =link_to 'Delete from friend', destroy_friend_path(friend), method: :delete, class: "btn btn-danger btn-sm float-right delete", data: { remote: true}
+      %i{id: "my-#{i.id}-friend"}
+        =link_to 'Delete', destroy_friend_path(friend), method: :delete, class: "btn btn-danger btn-sm float-right delete", data: { remote: true}

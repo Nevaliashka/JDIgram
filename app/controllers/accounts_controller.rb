@@ -1,10 +1,18 @@
 class AccountsController < ApplicationController
   before_action :authenticate_account!
   before_action :set_account, only: [:profile]
-  skip_before_action :verify_authenticity_token
 
   def index
     @accounts = Account.where(["username LIKE ?", "%#{params[:search]}%"]).limit(10)
+  end
+
+  def messages
+      session[:conversations] ||= []
+
+      @accounts = Follower.where(follower_id: current_account.id)
+      @conversations = Conversation.includes(:recipient, :messages)
+                           .find(session[:conversations])
+
   end
 
   def dashboard
@@ -13,6 +21,7 @@ class AccountsController < ApplicationController
     @follower_suggestions = Account.where.not(id: following_ids)
     @posts = Post.includes(:account).where(account_id: following_ids).active
     @comment = Comment.new
+    @post = Post.find(params[:id]) if params[:id].present?
   end
 
   def friendlist
@@ -29,16 +38,18 @@ class AccountsController < ApplicationController
 
   def delete_friend
     @follower = Follower.find(params[:follower_id])
-    @follower.destroy
     respond_to do |format|
       format.js
     end
+    @follower.destroy
   end
 
   def follow_account
     follower_id = params[:follow_id]
-    Follower.create(follower_id: current_account.id, following_id: follower_id)
-    redirect_to friendlist_path
+    @follower = Follower.create(follower_id: current_account.id, following_id: follower_id)
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

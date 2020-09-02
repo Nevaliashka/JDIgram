@@ -9,14 +9,13 @@
             -if current_account.username == @account.username
               = link_to 'Edit profile', edit_account_registration_path, :class => "btn btn-outline-info float-right"
             -else
-              =form_tag follow_account_path, method: :post, class: "float-right" do
-                -this_friend = Follower.find_by(following_id: @account.id, follower_id: current_account.id)
-                = hidden_field_tag :follow_id, @account.id
-                -if this_friend
-                  %i
-                    = link_to 'Delete from friend', destroy_friend_path(this_friend), method: :delete, class: "btn btn-danger btn-sm float-right delete", data: { remote: true}
-                -else
-                  = submit_tag "Follow", class: "btn btn-info btn-sm"
+              -this_friend = Follower.find_by(following_id: @account.id, follower_id: current_account.id)
+              -if this_friend
+                %i{id: "my-#{this_friend.following_id}-friend"}
+                  = link_to 'Delete', destroy_friend_path(this_friend), method: :delete, class: "btn btn-danger btn-sm float-right delete", data: { remote: true}
+              -else
+                %i{id: "my-#{@account.id}-friend"}
+                  = render "accounts/button_add_to_friend", friend: @account.id
 
             = @account.full_name
 
@@ -25,7 +24,7 @@
           =@account.posts.count
           posts
         .col-4
-          =link_to "#{@account.total_followers} followers", friendlist_path
+          ="#{@account.total_followers} followers"
         .col-4
           =@account.total_following
           following

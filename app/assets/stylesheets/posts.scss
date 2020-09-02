@@ -50,7 +50,11 @@
 
 .comments-feed{
   height: 300px;
-  overflow: scroll;
+  overflow-y: scroll;
+}
+
+.content{
+  max-width: 100px;
 }
 
 .post-details .post-actions{
@@ -83,4 +87,8 @@
   .post-stats {
     display: block;
   }
+}
+
+.img-fluid{
+  width: 525px;
 }

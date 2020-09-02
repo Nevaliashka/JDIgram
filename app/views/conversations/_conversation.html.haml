@@ -1,0 +1,12 @@
+%li.margin-bottom-20
+  .panel.panel-default{"data-conversation-id" => conversation.id}
+    .panel-heading
+      = link_to conversation.opposed_account(account).username, '', class: 'toggle-window text-dark'
+      = link_to "x", close_conversation_path(conversation), class: "btn btn-default btn-xs float-right", remote: true, method: :post
+    .panel-body{:style => "display: none;"}
+      .messages-list
+        %ul= render 'conversations/conversation_content', messages: conversation.messages, account: account
+      = form_for [conversation, conversation.messages.new], remote: true do |f|
+        = f.hidden_field :account_id, value: account.id
+        = f.text_area :body, class: "form-control"
+        = f.submit "Send", class: "btn btn-success"

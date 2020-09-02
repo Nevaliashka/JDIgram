@@ -1,3 +1,5 @@
-$(".delete").bind('ajax:success', function(){
-  $(this).closest('i').fadeOut()
-})
+$('.delete').bind('ajax:success', function(){
+  $(this).closest('.delete').fadeOut('fast')
+});
+
+$("#my-<%= @follower.following_id %>-friend").append("<%= j render 'accounts/button_add_to_friend', friend: @follower.following_id %>")

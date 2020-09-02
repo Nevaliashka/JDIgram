@@ -10,6 +10,8 @@ class Account < ApplicationRecord
 
   has_many :posts
   has_many :likes
+  has_many :messages
+  has_many :conversations, foreign_key: :sender_id
 
   validates :username, presence: true, uniqueness: true
 

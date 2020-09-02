@@ -1,0 +1,22 @@
+.message-sent {
+  position: relative;
+  background-color: #aaf7ab;
+  border-color: #BCE8F1;
+  margin: 5px 20px;
+  padding: 10px;
+  float: right;
+}
+
+.message-received {
+  position: relative;
+  background-color: #7573f1;
+  border-color: #949697;
+  margin: 5px 20px;
+  padding: 10px;
+  float: left;
+}
+
+ul {
+  padding-left: 0px;
+  list-style: none;
+}

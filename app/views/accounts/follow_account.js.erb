@@ -1,0 +1,5 @@
+$(".follow").bind('ajax:success', function(){
+  $(this).closest(".follow").fadeOut('fast')
+});
+
+$("#my-<%= @follower.following_id %>-friend").append("<%= j render 'accounts/button_remove_from_friend', couple: @follower %>")

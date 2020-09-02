@@ -4,10 +4,9 @@
       - this_friend = Follower.find_by(following_id: account.id, follower_id: current_account.id)
       =link_to profile_picture(account, 70), profile_path(account.username)
       =link_to account.username, profile_path(account.username), :class => "text-dark"
-      =form_tag follow_account_path, method: :post, class: "float-right" do
-        = hidden_field_tag :follow_id, account.id
-        -if this_friend
-          %i
-            = link_to 'Delete from friend', destroy_friend_path(this_friend), method: :delete, class: "btn btn-danger btn-sm float-right delete", data: { remote: true}
-        -else
-          = submit_tag "Follow", class: "btn btn-info btn-sm float-right follow"
+      -if this_friend
+        %i{id: "my-#{this_friend.following_id}-friend"}
+          = link_to 'Delete', destroy_friend_path(this_friend), method: :delete, class: "btn btn-danger btn-sm float-right delete", data: { remote: true}
+      -else
+        %i{id: "my-#{account.id}-friend"}
+          = render "accounts/button_add_to_friend", friend: account.id

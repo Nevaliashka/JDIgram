@@ -1,0 +1,6 @@
+%li
+  .row
+    %div{class: account.id == message.account_id ? "message-sent" : "message-received"}
+      -sender_account = Account.find(message.account_id)
+      =link_to profile_picture(sender_account, 30), profile_path(sender_account.username)
+      = message.body
