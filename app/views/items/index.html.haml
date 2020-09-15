@@ -1,0 +1,7 @@
+%script{:src => "https://js.stripe.com/v3/", :type => "text/javascript"}
+-@items.each do |f|
+  =f.name
+  =f.price / 100
+  $
+  =button_to 'buy item', charge_create_path , method: :post, params: {id: f.id}, remote: true
+  %br

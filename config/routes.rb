@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   root to: "public#homepage" ,as: "home"
   devise_for :accounts
 
+  scope '/charge' do
+    post 'create', to: 'charges#create', as: 'charge_create'
+    get 'success', to: 'charges#success', as: 'charge_success'
+    get 'cancel', to: 'charges#cancel', as: 'charge_cancel'
+  end
+  resources :items, only: [:index]
   resources :posts, only: [:new, :create, :show, :destroy]
   resources :comments, only: [:create, :destroy]
   resources :conversations, only: [:create] do

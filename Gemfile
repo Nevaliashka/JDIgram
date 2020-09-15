@@ -18,6 +18,8 @@ gem 'uglifier', '>= 1.3.0'
 
 
 # Gems which I added
+gem 'stripe'
+#
 gem 'bootstrap-sass'
 gem 'haml-rails'
 gem 'devise'
