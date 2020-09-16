@@ -6,6 +6,7 @@
       .input-group-append
         = submit_tag :Find do
           %i.fa.fa-envelope
+%nav.my-2.my-md-0.mr-md-3= link_to 'Store', items_path, :class => "btn btn-outline-primary"
 %nav.my-2.my-md-0.mr-md-3= link_to 'Add post', new_post_path, :class => "btn btn-outline-primary"
 %nav.my-2.my-md-0.mr-md-3= link_to 'Friendlist', friendlist_path, :class => "btn btn-outline-primary"
 %nav.my-2.my-md-0.mr-md-3= link_to 'Messages', messages_path, :class => "btn btn-outline-primary"
