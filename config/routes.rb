@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get 'success', to: 'charges#success', as: 'charge_success'
     get 'cancel', to: 'charges#cancel', as: 'charge_cancel'
   end
-  resources :items, only: [:index]
+  resources :items, only: [:index], as: :items
   resources :posts, only: [:new, :create, :show, :destroy]
   resources :comments, only: [:create, :destroy]
   resources :conversations, only: [:create] do
